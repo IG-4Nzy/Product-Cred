@@ -9,6 +9,7 @@ public class ProductMapper {
         dto.setId(product.getId().toString());
         dto.setName(product.getName());
         dto.setCategory(product.getCategory());
+        dto.setRating(product.getRating());
         return dto;
     }
 

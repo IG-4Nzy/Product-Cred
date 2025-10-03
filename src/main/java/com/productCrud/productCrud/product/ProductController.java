@@ -38,8 +38,9 @@ public class ProductController {
     @GetMapping("get-product-list")
     public ResponseEntity<List<ProductDto>> getProductList(@RequestParam(required = false) String id,
                                                            @RequestParam(required = false) String name,
-                                                           @RequestParam (required = false) String productCategory){
-        List<ProductDto> response = productService.getProductList(id,name,productCategory);
+                                                           @RequestParam (required = false) String productCategory,
+                                                           @RequestParam(required = false) Integer rating){
+        List<ProductDto> response = productService.getProductList(id,name,productCategory,rating);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 

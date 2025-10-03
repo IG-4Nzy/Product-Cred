@@ -42,13 +42,19 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
-    public List<ProductDto> getProductList(String id, String name, String productCategory) {
+    public List<ProductDto> getProductList(String id, String name, String productCategory,Integer rating) {
         return productRepository.findAll()
                 .stream()
                 .sorted(Comparator.comparing(Product::getName))
                 .filter(p -> id == null || p.getId().toString().equals(id))
                 .filter(p -> name == null || p.getName().contains(name))
-                .filter(p -> productCategory == null || p.getName().toLowerCase().contains(productCategory.toLowerCase()) || p.getId().toString().equals(productCategory))
+                .filter(p -> productCategory == null || p.getName()
+                        .toLowerCase()
+                        .contains(productCategory.toLowerCase())
+                        || p.getId()
+                        .toString()
+                        .equals(productCategory))
+                .filter(p -> rating == null || p.getRating() < rating)
                 .map(ProductMapper::toDto)
                 .toList();
     }

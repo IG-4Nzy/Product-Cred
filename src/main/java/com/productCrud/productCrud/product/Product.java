@@ -1,12 +1,9 @@
 package com.productCrud.productCrud.product;
 
-import com.productCrud.productCrud.productReview.dto.ProductReviewDto;
 import lombok.Data;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-
-import java.util.List;
 
 @Document(collection = "products")
 @Data
@@ -15,4 +12,5 @@ public class Product {
     private ObjectId id;
     private String name;
     private String category;
+    private double rating;
 }
